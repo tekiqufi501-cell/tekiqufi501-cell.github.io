@@ -2,90 +2,162 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
+  <!-- 不要動 -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pikmin Bloom活動入口</title>
+  <title>Pikmin Bloom活動入口</title>
+  <!-- 上面的這個是你的網頁標題名字 -->
+
+  <!-- ========== 下面這堆是給 Threads / FB / LINE 用的分享預覽 ========== -->
+  <!-- 不要動 -->
+  <meta property="og:type" content="website">
+  <!-- 下面這一行雙引號裡面一點要掛你發的網頁網址 -->
+  <meta property="og:url" content="https://tekiqufi501-cell.github.io/">
+  <!-- 分享顯示的大標題 -->
+  <meta property="og:title" content="Pikmin Bloom代碼領取">
+  <!-- 分享顯示的副標題 -->
+  <meta property="og:description" content="點擊加入領取入口">
+  <!-- 顯示的瀏覽圖，要掛你的網頁網址+背景圖名字.jpg，要是不知道網頁網址就看第14行 -->
+  <meta property="og:image" content="https://tekiqufi501-cell.github.io/pikmin.jpg">
+
+  <!-- ========== 下面這堆是給 Twitter / Threads 用的大圖卡片 ========== -->
+  <!-- 不要動 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- 分享顯示的大標題 -->
+  <meta name="twitter:title" content="Pikmin Bloom代碼領取">
+  <!-- 分享顯示的副標題 -->
+  <meta name="twitter:description" content="點擊加入領取入口">
+  <!-- 分享顯示的圖片和20行一模一樣就可以了 -->
+  <meta name="twitter:image" content="https://tekiqufi501-cell.github.io/pikmin.jpg">
   
-  <!-- 載入 Noto Sans TC 才有真正的 900 字重 -->
+  <!-- 這裡是字體，看不懂就不要動 -->
+  <!-- preconnect 會讓字體載入更快 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
   
   <style>
+    /* * 不要動 */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
+      /* 你要用的字體，不懂就別動 */
       font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
+      /* 不要動 */
+      background-color: #0f1923; 
+      color: #fff; 
+      display: flex;
+      align-items: center; 
+      justify-content: center; 
+      min-height: 100vh; 
+      padding: 20px; 
+      position: relative; 
+      overflow: hidden; 
+    }
+
+    /* ========== 背景圖設定，找到下面的jpg把它改成你上傳的背景圖片名字一模一樣 ========== */
+    body::before {
+      content: ''; 
+      position: fixed; 
+      top: 0; left: 0; 
+      width: 100%; height: 100%; 
       background: url("pikmin.jpg") center center / cover no-repeat;
       background-color: rgba(15, 25, 35, 0.75);
       background-blend-mode: multiply;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 20px;
+      opacity: 0; 
+      animation: fadeInBg 0.6s ease-out 0.1s forwards;
+      z-index: -1; 
+    }
+
+    /* 千萬別動 */
+    @keyframes fadeInBg {
+      to { opacity: 1; }
     }
     
+    /* 不要動 */
     .container { 
       text-align: center; 
       max-width: 500px; 
+      animation: fadeInUp 0.5s ease-out; 
+    }
+
+    /* 不要動 */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
+    /* 大標題 H1 */
     h1 { 
-      font-size: 42px; 
-      color: #ffcb05; /* 皮卡丘黃 */
-      margin-bottom: 20px; 
-      font-weight: 900;
-      text-shadow: 3px 3px 0 #1a4d8f; /* 寶可夢藍描邊，讓黃字更清楚 */
+      font-size: 42px; /* 字體大小 */
+      color: #ffcb05; /* 字體顏色 */
+      margin-bottom: 20px; /* 下面間隔多少 */
+      font-weight: 900; /* 字體的粗細 */
+      /* 文字陰影：X偏移3px Y偏移3px 模糊0 顏色，做描邊效果 */
+      text-shadow: 3px 3px 0 #1a4d8f; 
     }
     
-    /* 段落：寶可夢藍 + 粗體 */
+    /* 副標題段落 */
     p { 
       font-size: 18px; 
-      color: #2a75bb; 
-      font-weight: bold; 
+      color: #2a75bb; /* 字體顏色 */
+      font-weight: bold; /* 粗體 */
       margin-bottom: 30px; 
     }
     
+    /* 按鈕樣式 */
     .btn {
-      background: #ffcb05; 
-      color: #2a75bb; 
-      padding: 18px 50px;
-      text-decoration: none; 
-      border-radius: 8px; 
+      background: #ffcb05; /* 黃色底 */
+      color: #2a75bb; /* 藍色字 */
+      padding: 18px 50px; /* 上下18 左右50，撐大按鈕 */
+      text-decoration: none; /* 拿掉底線 */
+      border-radius: 8px; /* 圓角 */
       font-size: 22px;
       font-weight: bold; 
-      display: inline-block; 
-      transition: 0.2s;
-      box-shadow: 0 4px 0 #d4a904; /* 按鈕立體感 */
+      display: inline-block; /* 才能設定 padding */
+      transition: 0.2s; /* 所有變化 0.2秒內完成，有動畫感 */
+      /* 按鈕陰影：往下4px 模糊0 深黃色，做出立體感 */
+      box-shadow: 0 4px 0 #d4a904; 
     }
     
+    /* 不要動 */
     .btn:hover { 
       transform: scale(1.05); 
-      box-shadow: 0 6px 0 #d4a904;
+      box-shadow: 0 6px 0 #d4a904; 
     }
     
+    /* 點擊後按鈕的反應，可以不動 */
     .btn:active {
-      transform: scale(1.02);
-      box-shadow: 0 2px 0 #d4a904;
+      transform: scale(1.02); 
+      box-shadow: 0 2px 0 #d4a904; 
     }
     
+    /* 頭貼樣式 */
     .avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      border: 3px solid #ffcb05;
+      width: 100px; height: 100px; /* 100x100 正方形 */
+      border-radius: 50%; /* 變圓形 */
+      border: 3px solid #ffcb05; /* 3px 黃色頭貼邊框 */
       margin-bottom: 20px;
-      object-fit: cover;
+      object-fit: cover; /* 圖片填滿圓形，多餘的裁掉不變形 */
     }
   </style>
 </head>
 <body>
+  <!-- 主要內容區 -->
   <div class="container">
+    <!-- 頭貼，logo.jpg 要跟 index.html 放同資料夾 -->
     <img class="avatar" src="logo.jpg" alt="頭貼">
+    <!-- 大標題 -->
     <h1>Pikmin Bloom</h1>
-    <p>領取入口</p>
-    <a class="btn" href="https://lin.ee/sHzLV56">立即領取序號</a>
+    <!-- 說明文字 -->
+    <p>代碼領取登記區</p>
+    <!-- 按鈕，點了會跳去 LINE -->
+    <a class="btn" href="https://lin.ee/sHzLV56">領取入口</a>
   </div>
 </body>
 </html>
